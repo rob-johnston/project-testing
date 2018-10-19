@@ -1,4 +1,5 @@
 const { populate } = require('feathers-hooks-common');
+const convertAmountToBaseCurrency = require('../../hooks/convertAmountToBaseCurrency')
 // carry out the deposit
 const executeDeposit = (hook) => {
   // convert amount into accounts base
@@ -25,6 +26,7 @@ module.exports = {
           ]
         }
       }),
+      convertAmountToBaseCurrency(),
     ],
     update: [],
     patch: [],

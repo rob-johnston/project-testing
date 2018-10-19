@@ -20,8 +20,8 @@ class Service {
   }
 
   // proxy for a 3rd party API call for currency exchange - would probably want to cache these rates for 1min intervals
-  async get (id, params) {
-    if(params.base === 'usd') {
+  async get (data) {
+    if(data.base === 'usd') {
       return usdBaseResponse;
     }
     return eurBaseResponse;

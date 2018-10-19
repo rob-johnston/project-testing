@@ -1,11 +1,46 @@
-const exectu
+const { populate, dePopulate } = require('feathers-hooks-common');
+const convertAmountToBaseCurrency = require('../../hooks/convertAmountToBaseCurrency')
+const addExchangeRates = require('../../hooks/addExchangeRates')
+// carry out the deposit
+const executeWithdrawal = async (hook) => {
+  await hook.app.service('accounts')
+    .patch(
+      hook.result.accountId,
+      { action: 'withdrawal',
+        amount: hook.result.amount
+      })
+  return hook;
+};
+
+const moveAccountId = (hook) => {
+  hook.data.accountId = hook.data.account;
+  return hook;
+}
 
 module.exports = {
   before: {
     all: [],
     find: [],
     get: [],
-    create: [],
+    create: [
+      moveAccountId,
+      populate({
+        schema: {
+          provider: undefined,
+          include: [
+            {
+              service: 'accounts',
+              parentField: 'account',
+              childField: '_id',
+              nameAs: 'account',
+            }
+          ]
+        }
+      }),
+      addExchangeRates(),
+      convertAmountToBaseCurrency(),
+      dePopulate(),
+    ],
     update: [],
     patch: [],
     remove: []
@@ -15,7 +50,7 @@ module.exports = {
     all: [],
     find: [],
     get: [],
-    create: [ executeWithdrawal() ],
+    create: [ executeWithdrawal ],
     update: [],
     patch: [],
     remove: []
