@@ -35,7 +35,7 @@ const executeTransfer = async (hook) => {
     });
 
   return hook;
-}
+};
 
 module.exports = {
   before: {

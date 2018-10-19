@@ -1,0 +1,20 @@
+version: "2"
+services:
+  mongo:
+    container_name: mongo
+    image: mongo
+    ports:
+      - "27017:27017"
+    command: --smallfiles
+  app:
+    container_name: app
+    restart: always
+    build: .
+    ports:
+      - "3030:3030"
+    links:
+      - mongo
+    depends_on:
+      - mongo
+    environment:
+      WAIT_HOSTS: mongo:27017

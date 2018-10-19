@@ -10,12 +10,12 @@ const formatMoneyTransaction = async (hook) => {
     hook.data.balance = updatedAmount + parseInt(hook.data.amount);
   } else if(hook.data.action === 'withdrawal') {
     hook.data.balance = updatedAmount - parseInt(hook.data.amount);
-  };
+  }
   delete hook.data.amount;
   delete hook.data.action;
 
   return hook;
-}
+};
 
 module.exports = {
   before: {
