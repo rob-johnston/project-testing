@@ -1,14 +1,14 @@
 const { populate, dePopulate } = require('feathers-hooks-common');
 const convertAmountToBaseCurrency = require('../../hooks/convertAmountToBaseCurrency')
 const addExchangeRates = require('../../hooks/addExchangeRates')
-// carry out the deposit
+// carry out the withdrawal
 const executeWithdrawal = async (hook) => {
   await hook.app.service('accounts')
     .patch(
       hook.result.accountId,
       { action: 'withdrawal',
         amount: hook.result.amount
-      })
+      });
   return hook;
 };
 
