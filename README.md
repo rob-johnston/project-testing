@@ -8,50 +8,62 @@ This project uses [Feathers](http://feathersjs.com). An open source web framewor
 
 ## Getting Started
 
-Getting up and running is as easy as 1, 2, 3.
+run the start script with 
 
-1. Make sure you have [NodeJS](https://nodejs.org/) and [npm](https://www.npmjs.com/) installed.
-2. Install your dependencies
+```./doCoolStuff```
 
-    ```
-    cd path/to/mobilab-project; npm install
-    ```
-
-3. Start your app
-
-    ```
-    npm start
-    ```
 
 ## Testing
 
-Simply run `npm test` and all your tests in the `test/` directory will be run.
+Simply run `npm test`
 
-## Scaffolding
+## Documentation 
 
-Feathers has a powerful command line interface. Here are a few things it can do:
+This app opens up 4 Resource Endpoints in order to make deposits, withdrawals and transfers with bank accounts
 
+/accounts
+
+represents a bank account
+eg: get all bank accounts:
+
+```GET  localhost:3030/accounts```
+
+/deposits
+
+represents a deposit to a bank account. Created as such
+
+``` POST localhost:3030/deposits```
+``` 
+{
+  account: 'xxxxxx', // the account we are depositing to
+  amount: 100, // the amount we are depositing
+  currency: 'eur' // currency of the amount we are depositing
+}
 ```
-$ npm install -g @feathersjs/cli          # Install Feathers CLI
 
-$ feathers generate service               # Generate a new Service
-$ feathers generate hook                  # Generate a new Hook
-$ feathers generate model                 # Generate a new Model
-$ feathers help                           # Show all commands
+/withdrawals
+
+represents a withdrawal from a bank account. Created as such
+
+``` POST localhost:3030/withdrawals```
+``` 
+{
+  account: 'xxxxxx', // the account we are withdrawing from
+  amount: 100, // the amount we are withdrawing
+  currency: 'eur' // currency of the amount we are withdrawing
+}
 ```
 
-## Help
+/transfers
 
-For more information on all the things you can do with Feathers visit [docs.feathersjs.com](http://docs.feathersjs.com).
+represents a transfer from one account to another
 
-## Changelog
-
-__0.1.0__
-
-- Initial release
-
-## License
-
-Copyright (c) 2016
-
-Licensed under the [MIT license](LICENSE).
+``` POST localhost:3030/transfers```
+``` 
+{
+  originAccountId: 'xxxxxx', // the account we are transfering out of
+  destinationAccountId: 'xxxxx' // the account we are transfering to
+  amount: 100, // the amount we are transfering
+  currency: 'eur' // currency of the amount we are transfering
+}
+```

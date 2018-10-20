@@ -25,13 +25,15 @@ const executeTransfer = async (hook) => {
     .create({
       account: originAccountId,
       amount: amountForOrigin,
-      currency: originAccount.currency
+      currency: originAccount.currency,
+      transferId: hook.result._id
     });
   await hook.app.service('deposits')
     .create({
       account: destinationAccountId,
       amount: amountForDestination,
-      currency: destinationAccount.currency
+      currency: destinationAccount.currency,
+      transferId: hook.result._id,
     });
 
   return hook;
