@@ -8,7 +8,7 @@ This project uses [Feathers](http://feathersjs.com). An open source web framewor
 
 ## Getting Started
 
-run the start script with (may need `sudo` depending on your set up)
+Clone this repo, cd into it and run the start script with (may need `sudo` depending on your set up)
 
 ```./doCoolStuff```
 
