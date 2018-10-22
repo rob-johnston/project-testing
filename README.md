@@ -1,6 +1,6 @@
-# mobilab-project
+# project
 
-> test project for mobilab
+> testing project, nothing to see here
 
 ## About
 
