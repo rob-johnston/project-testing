@@ -8,10 +8,12 @@ This project uses [Feathers](http://feathersjs.com). An open source web framewor
 
 ## Getting Started
 
-run the start script with 
+run the start script with (may need `sudo` depending on your set up)
 
 ```./doCoolStuff```
 
+## What to do 
+On start up, all data is cleared and some initial accounts are created (with ids 1, 2 and 3). You can then test by creating a transfer from one account ot the other to move money around and create some logs. Then you can query for some service-logs.
 
 ## Testing
 
@@ -19,7 +21,7 @@ Simply run `npm test`
 
 ## Documentation 
 
-This app opens up 4 Resource Endpoints in order to make deposits, withdrawals and transfers with bank accounts
+This app opens up 5 Resource Endpoints in order to make deposits, withdrawals and transfers with bank accounts (also has a logging endpoint)
 
 /accounts
 
@@ -66,4 +68,19 @@ represents a transfer from one account to another
   amount: 100, // the amount we are transfering
   currency: 'eur' // currency of the amount we are transfering
 }
+```
+
+/service-logs
+
+whenever a deposit/withdrawal/transfer is created, a corresponding log is created.
+You can search the logs via their createdAt date by using $gte and $lte as such
+
+``` 
+GET localhost:3030/service-logs?createdAt[$gte]=2018-01-01&createdAt[$lte]=2018-08-12 
+```
+
+You can also order these by setting sort to 1 or -1
+
+``` 
+GET localhost:3030/service-logs?$sort[createdAt]=1  
 ```

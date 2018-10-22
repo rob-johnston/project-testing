@@ -1,4 +1,6 @@
 const convertCurrency = require('../../helpers/convertCurrency');
+const createLog = require('../../hooks/createLog');
+
 const executeTransfer = async (hook) => {
   // unpack info
   const {
@@ -54,7 +56,10 @@ module.exports = {
     all: [],
     find: [],
     get: [],
-    create: [ executeTransfer ],
+    create: [
+      executeTransfer,
+      createLog('transfer')
+    ],
     update: [],
     patch: [],
     remove: []

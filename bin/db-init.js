@@ -6,16 +6,19 @@ const dbName = url.parse(config).path.substring(1);
 
 const accounts = [
   {
+    _id: '1',
     balance: 1000,
     currency: 'eur',
     name: 'john doe'
   },
   {
+    _id: '2',
     balance: 2000,
     currency: 'eur',
     name: 'max mustermann'
   },
   {
+    _id: '3',
     balance: 3000,
     currency: 'usd',
     name: 'John McClane'

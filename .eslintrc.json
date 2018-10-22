@@ -8,6 +8,9 @@
     "ecmaVersion": 2017
   },
   "extends": "eslint:recommended",
+  "ecmaFeatures": {
+    "experimentalObjectRestSpread": true
+  },
   "rules": {
     "indent": [
       "error",

@@ -1,6 +1,7 @@
 const { populate, dePopulate } = require('feathers-hooks-common');
 const addExchangeRates = require('../../hooks/addExchangeRates');
 const convertAmountToBaseCurrency = require('../../hooks/convertAmountToBaseCurrency');
+const createLog = require('../../hooks/createLog');
 
 // carry out the deposit
 const executeDeposit = async (hook) => {
@@ -51,7 +52,10 @@ module.exports = {
     all: [],
     find: [],
     get: [],
-    create: [ executeDeposit ],
+    create: [
+      executeDeposit,
+      createLog('deposit')
+    ],
     update: [],
     patch: [],
     remove: []

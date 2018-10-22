@@ -18,3 +18,4 @@ services:
       - mongo
     environment:
       WAIT_HOSTS: mongo:27017
+      MONGO_URL: "mongodb://mongo:27017/mobilab_project"
