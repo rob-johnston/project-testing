@@ -8,7 +8,7 @@ This project uses [Feathers](http://feathersjs.com). An open source web framewor
 
 ## Getting Started
 
-Clone this repo, cd into it and run the start script with (may need `sudo` depending on your set up)
+You'll need docker-compose on your machine for this to run. Clone this repo, cd into it and run the start script with (may need to run the script as `sudo` depending on your set up)
 
 ```./doCoolStuff```
 
